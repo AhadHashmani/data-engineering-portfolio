@@ -1,12 +1,11 @@
 """
-E. coli Exposure Risk Analysis — Austin, TX
-============================================
-Spatial analysis pipeline for environmental health data.
-Computes region-level contamination risk scores, identifies
-high-exposure zones, and generates a choropleth visualization.
+E. coli Exposure Risk Analysis
+==============================
+Scores zip-code zones from synthetic environmental records.
+Computes a composite risk score, flags high-exposure zones,
+prints a report, and writes risk_scores.csv.
 
 Author: Ahad Hashmani
-Advisor: Prof. Timothy Keitt, Dept. of Integrative Biology, UT Austin
 """
 
 import logging
@@ -155,7 +154,7 @@ def print_report(risk_df: pd.DataFrame, config: AnalysisConfig) -> None:
     pct_high = len(high) / total * 100
 
     print("\n" + "=" * 60)
-    print("  E. COLI EXPOSURE RISK REPORT — AUSTIN, TX")
+    print("  E. COLI EXPOSURE RISK REPORT — SYNTHETIC DATA")
     print("=" * 60)
     print(f"  Zones analysed          : {total}")
     print(f"  High-risk zones (z>{config.high_risk_threshold}) : {len(high)} ({pct_high:.1f}%)")
